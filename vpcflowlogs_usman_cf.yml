@@ -1,6 +1,6 @@
 Parameters:
   ParentVPCStack:
-    Description: 'Stack name of parent VPC stack based on vpc/vpc-*azs.yaml template. '
+    Description: 'VPC ID Stack name of parent VPC stack based on vpc/vpc-*azs.yaml template. '
     Type: String
   ExternalLogBucket:
     Description: 'Optional The name of an S3 bucket where you want to store flow logs. If you leave this empty, the Amazon S3 bucket is created for you.'
@@ -67,7 +67,7 @@ Resources:
     Properties:
       LogDestination: !If [HasLogFilePrefix, !Sub '${LogBucket.Arn}/${LogFilePrefix}/', !GetAtt 'LogBucket.Arn']
       LogDestinationType: s3
-      ResourceId: {'Fn::ImportValue': !Sub '${ParentVPCStack}-VPC'}
+      ResourceId: vpc-b28cbeda
       ResourceType: 'VPC'
       TrafficType: !Ref TrafficType
   FlowLogExternalBucket:
@@ -76,7 +76,7 @@ Resources:
     Properties:
       LogDestination: !If [HasLogFilePrefix, !Sub 'arn:aws:s3:::${ExternalLogBucket}/${LogFilePrefix}/', !Sub 'arn:aws:s3:::${ExternalLogBucket}']
       LogDestinationType: s3
-      ResourceId: {'Fn::ImportValue': !Sub '${ParentVPCStack}-VPC'}
+      ResourceId: vpc-b28cbeda
       ResourceType: 'VPC'
       TrafficType: !Ref TrafficType
 Outputs:
