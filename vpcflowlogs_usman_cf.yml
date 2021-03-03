@@ -1,6 +1,6 @@
 Parameters:
   ParentVPCStack:
-    Description: 'Stack name of parent VPC stack based on vpc/vpc-*azs.yaml template.'
+    Description: 'Stack name of parent VPC stack based on vpc/vpc-*azs.yaml template. '
     Type: String
   ExternalLogBucket:
     Description: 'Optional The name of an S3 bucket where you want to store flow logs. If you leave this empty, the Amazon S3 bucket is created for you.'
